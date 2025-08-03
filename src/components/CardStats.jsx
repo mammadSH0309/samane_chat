@@ -35,7 +35,7 @@ function CardStats({ data, data1 }) {
                 className='flex justify-start items-center gap-x-2   h-full'>
                 <div className=' right-1 top-[3px] rounded-full text-white  bg-cyan-600 size-13 '>
                     <div className='flex  justify-center items-center h-full'>
-                        <RemoveRedEyeIcon sx={{ fontSize: 35 }} />
+                        <PostAddIcon sx={{ fontSize: 35 }} />
                     </div>
                 </div>
                 <div className="flex flex-1   gap-x-2  justify-between px-2  ">
@@ -59,7 +59,7 @@ function CardStats({ data, data1 }) {
                 className='flex justify-start items-center gap-x-2   h-full'>
                 <div className=' right-1 top-[3px] rounded-full text-white  bg-cyan-600 size-13 '>
                     <div className='flex  justify-center items-center h-full'>
-                        <PostAddIcon sx={{ fontSize: 35 }} />
+                        <RemoveRedEyeIcon sx={{ fontSize: 35 }} />
                     </div>
                 </div>
                 <div className="flex flex-1   gap-x-2  justify-between px-2  ">

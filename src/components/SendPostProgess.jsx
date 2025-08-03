@@ -36,7 +36,22 @@ function SendPostProgess() {
     }, [step, open])
     return (
         <>
-            <Dialog fullWidth maxWidth="sm" open={open} onClose={() => setOpen(false)}>
+            <Dialog
+                PaperProps={{
+                    sx: {
+                        width: {
+                            mobile: '95%',   // <= 640px
+                            tablet: '90%',   // <= 1024px
+                            laptop: '80%',   // <= 1280px
+                            desktop: '50%'   // > 1280px
+                        },
+                        maxWidth: '100%',
+                        mx: 'auto',
+                        my: 4,
+                        borderRadius: 2,
+                    },
+                }}
+                fullWidth maxWidth="sm" open={open} onClose={() => setOpen(false)}>
                 <div
                     sx={{ fontFamily: 'f' }}
                     className="bg-gray-100 font-YekanBakh_Bold  text-cyan-600 text-center flex justify-center items-center h-12">
@@ -93,7 +108,7 @@ function SendPostProgess() {
                                                                 disableDayPicker
                                                                 value={hour}
                                                                 locale={persian_fa}
-                                                             
+
                                                                 onChange={(e) => {
                                                                     setHour(e);
 
@@ -110,17 +125,17 @@ function SendPostProgess() {
                                             <div className='flex gap-x-4 mt-3 justify-center'>
                                                 <div>
                                                     <Buttons
-                                                    type={'1'}
-                                                    text={'بازگشت'}
+                                                        type={'1'}
+                                                        text={'بازگشت'}
                                                         onClick={() => {
                                                             setOpen(false)
                                                         }}
                                                         className='  cursor-pointer text-[13px] p-1 w-15 bg-white border font-YekanBakh_Bold text-[#437c99] border-[#437c99]  rounded-md '>
-                                                        
+
                                                     </Buttons>
                                                 </div>
-                                                <Buttons 
-                                                text={'ادامه'}
+                                                <Buttons
+                                                    text={'ادامه'}
                                                     onClick={() => {
 
                                                         if (date == null || hour == null) {
@@ -132,7 +147,7 @@ function SendPostProgess() {
 
                                                     }}
                                                     className='bg-[#437c99] cursor-pointer text-[13px] items-center w-15 flex justify-center rounded-md text-white  p-1'>
-                                                    
+
                                                 </Buttons>
 
                                             </div>
