@@ -9,7 +9,7 @@ export const useMemberTrend = (channelId) => {
     return useQuery({
         queryKey: ['memberTrend', channelId, search, filter.toString(),],
         queryFn: async () => {
-            const response = await api.get(`/sapi/rep/member-trend/?${channelId ? `channel_id=${channelId}` : ''}`
+            const response = await api.get(`/sapi/rep/member-trend/?${channelId ? `channel=${channelId}` : ''}`
                 , { params: Object.fromEntries(filter) });
             return response.data;
         },

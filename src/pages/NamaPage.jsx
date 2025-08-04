@@ -47,7 +47,7 @@ function NamaPage() {
             {mobileTab === "posts" && (
               <Grid
                 className='overflow-scroll h-screen no-scrollbar'
-                container item size={{ lg: 12, xs: 12 }} >
+                container item size={12} >
                 <PhotoBox />
               </Grid>
             )}

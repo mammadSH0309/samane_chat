@@ -52,72 +52,7 @@ function AddNotificationModal({ open, onClose, notifications = [] }) {
 
       <DialogContent dividers sx={{ backgroundColor: '#fafafa', fontFamily: 'ray' }}>
         {/* فرم ایجاد اعلان */}
-        <Box
-          sx={{
-            backgroundColor: '#fff',
-            p: 3,
-            borderRadius: 2,
-            boxShadow: '0 0 10px rgba(0,0,0,0.05)',
-            mb: 4,
-          }}
-        >
-          <Typography variant="h6" gutterBottom>ایجاد اعلان جدید</Typography>
-
-          <TextField
-            label="عنوان"
-            fullWidth
-            value={formData.title}
-            onChange={(e) => setFormData(prev => ({ ...prev, title: e.target.value }))}
-            sx={{ mb: 2 }}
-          />
-
-          <TextField
-            label="متن اعلان"
-            fullWidth
-            multiline
-            minRows={3}
-            value={formData.message}
-            onChange={(e) => setFormData(prev => ({ ...prev, message: e.target.value }))}
-            sx={{ mb: 2 }}
-          />
-
-          <FormControlLabel
-            control={
-              <Checkbox
-                checked={formData.is_global}
-                onChange={handleCheckbox}
-              />
-            }
-            label="ارسال به همه کاربران (سراسری)"
-            sx={{ mb: 2, fontFamily: 'ray' }}
-          />
-
-          <Autocomplete
-            multiple
-            disabled={formData.is_global}
-            options={users}
-            getOptionLabel={(option) => option.username}
-            value={formData.users}
-            onChange={(e, newValue) =>
-              setFormData(prev => ({ ...prev, users: newValue }))
-            }
-            renderInput={(params) => (
-              <TextField {...params} label="کاربران دریافت‌کننده" placeholder="انتخاب کاربران" />
-            )}
-            sx={{ mb: 2 }}
-          />
-
-          <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
-            <Button
-              variant="contained"
-              onClick={handleSubmit}
-              disabled={isSending}
-              sx={{ fontFamily: 'ray' }}
-            >
-              ارسال اعلان
-            </Button>
-          </Box>
-        </Box>
+       
 
         {/* لیست اعلان‌ها */}
         {notifications.length === 0 ? (

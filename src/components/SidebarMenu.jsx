@@ -1,6 +1,6 @@
 import { Checkbox, FormControlLabel, Grid, Typography } from '@mui/material';
 import { useDaste } from '../customhook/fetchData/useDaste';
-import React, { useCallback, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { QueryClient, useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { ChannelList } from './ChannelList';
 import { api } from '../service/handleToken';
@@ -20,7 +20,13 @@ const faPlatform = (en) => {
     }
 };
 
-const SidebarMenu = ({ image, date, hour, input, setOpen }) => {
+const SidebarMenu = ({ image, date, hour, input, setOpen,
+    mode = "create", // 'create' | 'edit'
+    onSelectChange,  // callback فقط تو حالت edit
+    defaultChecked = {},
+    defaultCheckedCategories = {},
+
+}) => {
 
 
 
@@ -123,7 +129,27 @@ const SidebarMenu = ({ image, date, hour, input, setOpen }) => {
         setselectedPlatforms([platform]);
     };
 
+    const { data: categories } = useDaste();
 
+    const selectedPlatform = selectedPlatforms[0];
+    const selectedType = tab === 'channels' ? 'channel' : 'group';
+
+
+    useEffect(() => {
+        if (mode === "edit" && onSelectChange) {
+            const selectedIds = Object.values(checked[selectedType] || {}).flat();
+            const selectedCats = checkedCategories[selectedType]
+                ? Object.values(checkedCategories[selectedType]).flat()
+                : [];
+
+            onSelectChange({
+                platform: selectedPlatform,
+                channelIds: selectedIds,
+                categoryIds: selectedCats,
+                type: selectedType,
+            });
+        }
+    }, [checked, checkedCategories, selectedPlatform, selectedType, mode]);
     const postData = async (data) => {
         const selectedIds = Object.values(checked[selectedType] || {}).flat();
         if (!selectedIds.length) {
@@ -168,11 +194,6 @@ const SidebarMenu = ({ image, date, hour, input, setOpen }) => {
         mutation.mutate(dataToSend);
         // setOpen(false)
     };
-
-    const { data: categories } = useDaste();
-
-    const selectedPlatform = selectedPlatforms[0];
-    const selectedType = tab === 'channels' ? 'channel' : 'group';
 
     return (
         <>
@@ -251,24 +272,22 @@ const SidebarMenu = ({ image, date, hour, input, setOpen }) => {
                 </div>
 
             )}
-            <Grid size={12}>
-                <div className='flex pt-2 justify-center gap-x-2 '>
-                    <div>
-                        <Buttons text={"انصراف"}     type={'1'}  onClick={() => {
-                            setOpen(false)
-                        }}
-                            className='bg-[white] text-[#437c99] border border-[#437c99]  font-YekanBakh_Regular cursor-pointer text-[13px] items-center w-15 flex justify-center rounded-md  p-1'>
-                            
-                        </Buttons >
+            {mode === 'create' && (
+                <Grid size={12}>
+                    <div className='flex pt-2 justify-center gap-x-2 '>
+                        <div>
+                            <Buttons text={"انصراف"} type={'1'} onClick={() => setOpen(false)}
+                                className='bg-[white] text-[#437c99] border border-[#437c99] font-YekanBakh_Regular cursor-pointer text-[13px] items-center w-15 flex justify-center rounded-md p-1'>
+                            </Buttons>
+                        </div>
+                        <div>
+                            <Buttons text={"ثبت"} onClick={handlePost}
+                                className='bg-[#437c99] cursor-pointer font-YekanBakh_Regular text-[13px] items-center w-15 flex justify-center rounded-md text-white p-1'>
+                            </Buttons>
+                        </div>
                     </div>
-                    <div>
-                        <Buttons text={"ثبت"} onClick={handlePost} className='bg-[#437c99] cursor-pointer font-YekanBakh_Regular text-[13px] items-center w-15 flex justify-center rounded-md text-white  p-1'>
-                            
-                        </Buttons>
-                    </div>
-
-                </div>
-            </Grid>
+                </Grid>
+            )}
         </>
     );
 };

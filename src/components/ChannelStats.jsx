@@ -142,7 +142,7 @@ function ChannelStats() {
     };
 
     const { data: memberTrendData, isLoading: memberTrendLoading } = useMemberTrend(selectedChannelId);
-    console.log(dataProvinces)
+   
 
     if (error) return <div className="text-red-500 text-center w-full">خطا در دریافت اطلاعات کانال‌ها</div>;
 

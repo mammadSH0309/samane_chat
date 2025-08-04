@@ -29,11 +29,16 @@ function SendPostProgess() {
     const [date, setDate] = useState(null);
     const [hour, setHour] = useState(null);
     const [selectedImage, setSelectedImage] = useState(null);
+
     useEffect(() => {
         if (!open) {
-            setStep(0)
+            setStep(0);
+            setInput("");
+            setDate(null);
+            setHour(null);
+            setSelectedImage(null);
         }
-    }, [step, open])
+    }, [open]);
     return (
         <>
             <Dialog
@@ -111,7 +116,6 @@ function SendPostProgess() {
 
                                                                 onChange={(e) => {
                                                                     setHour(e);
-
                                                                 }}
                                                                 plugins={[
                                                                     <TimePicker />

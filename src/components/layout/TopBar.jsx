@@ -99,23 +99,23 @@ function TopBar() {
 
           </div>
           <div className='flex items-center gap-x-2'>
-            <div className='flex items-center '>
-              <button onClick={handleMenuOpen} className='border font-YekanBakh_Regular text-[13px]  border-[2px] text-[#00838F]   gap-x-1 items-center border-cyan-600 px-1 rounded-sm'>
+            <div className='flex items-center  '>
+              <button onClick={handleMenuOpen} className='border font-YekanBakh_Regular text-[13px]  border-[2px] border-[#b2c9d5]  gap-x-1 items-center border-cyan-600 px-1 rounded-sm'>
 
-                <SettingsIcon sx={{ fontSize: 17, color: '#00838F' }} />
+                <SettingsIcon sx={{ fontSize: 20, color: '#00838F' }} />
               </button>
             </div>
             <div className='flex items-center cursor-pointer '>
-              <button onClick={() => setNotificationModal(true)} className='border font-YekanBakh_Regular text-[13px]  border-[2px] text-[#00838F]   gap-x-1 items-center border-cyan-600 px-1 rounded-sm'>
+              <button onClick={() => setNotificationModal(true)} className='border font-YekanBakh_Regular text-[13px]  border-[#b2c9d5]  border-[2px] text-[#00838F]   gap-x-1 items-center border-cyan-600 px-1 rounded-sm'>
 
-                <NotificationsIcon sx={{ fontSize: 17, color: '#00838F' }} />
+                <NotificationsIcon sx={{ fontSize: 20, color: '#00838F' }} />
               </button>
             </div>
             <div className='flex  '>
-              <button onClick={handleLogout} className='border font-YekanBakh_Regular text-[13px]  border-[2px] text-[#00838F]   gap-x-1 items-center border-cyan-600 px-1 rounded-sm'>
+              <button onClick={handleLogout} className='border font-YekanBakh_Regular text-[13px]  border-[2px]  border-[#b2c9d5] text-[#00838F]   gap-x-1 items-center border-cyan-600 px-1 rounded-sm'>
 
                 <LogoutIcon className='flex justify-center '
-                  sx={{ fontSize: 17, color: '#00838F' }} />
+                  sx={{ fontSize: 20, color: '#00838F' }} />
               </button>
             </div>
 
